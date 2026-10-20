@@ -1,0 +1,1017 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#9f1239">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Bộ câu hỏi trắc nghiệm ôn tập truyền thống Quân đội nhân dân Việt Nam và Ngày hội Quốc phòng toàn dân.">
+  <title>Ôn tập truyền thống Quân đội nhân dân Việt Nam</title>
+  <style>
+:root {
+  --ink: #1f2937;
+  --muted: #667085;
+  --paper: #fffdf8;
+  --cream: #f8f2e7;
+  --line: #e7ded0;
+  --red: #9f1239;
+  --red-dark: #7f102f;
+  --gold: #c28a24;
+  --green: #18794e;
+  --green-soft: #e8f5ee;
+  --danger-soft: #fff0f1;
+  --shadow: 0 18px 50px rgba(72, 48, 24, .11);
+  --serif: "Times New Roman", "Noto Serif", "Liberation Serif", serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+}
+button, input { font: inherit; }
+button,
+.answer,
+[role="button"] {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.compatibility-banner {
+  width: min(1160px, calc(100% - 40px));
+  margin: 0 auto 12px;
+  padding: 12px 16px;
+  border: 1px solid #e6b8a2;
+  border-radius: 12px;
+  background: #fff2e8;
+  color: #7c2d12;
+  font-size: 14px;
+  font-weight: 700;
+}
+.app-ready .compatibility-banner { display: none; }
+.hidden { display: none !important; }
+.ambient { position: fixed; z-index: -1; border-radius: 999px; filter: blur(8px); opacity: .45; }
+.ambient-one { width: 460px; height: 460px; top: -220px; right: -130px; background: #f4d6c2; }
+.ambient-two { width: 330px; height: 330px; top: 520px; left: -220px; background: #ecdca8; }
+
+.topbar {
+  width: min(1160px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand { display: inline-flex; gap: 12px; align-items: center; text-decoration: none; color: var(--ink); }
+.brand-mark {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 13px;
+  background: var(--red); color: #f8d98a; box-shadow: 0 8px 18px rgba(159,18,57,.2);
+}
+.brand b, .brand small { display: block; }
+.brand b { font-family: var(--serif); font-size: 17px; }
+.brand small { color: var(--muted); font-size: 12px; letter-spacing: .05em; }
+.ghost-button, .icon-button, .text-button {
+  border: 0; background: transparent; color: var(--ink); font-weight: 700;
+}
+.ghost-button { padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.6); }
+.ghost-button:hover { border-color: var(--red); color: var(--red); }
+
+main { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+.home-view { padding: 46px 0 74px; }
+.hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 70px; align-items: center; min-height: 470px; }
+.eyebrow { margin: 0 0 12px; color: var(--red); font-size: 12px; font-weight: 850; letter-spacing: .16em; }
+h1, h2, p { margin-top: 0; }
+h1 { margin-bottom: 22px; max-width: 780px; font: 700 clamp(44px, 6.1vw, 78px)/.98 var(--serif); letter-spacing: -.025em; }
+h1 span { color: var(--red); }
+.hero-text { max-width: 650px; color: var(--muted); font-size: 18px; }
+.hero-actions, .result-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0 18px; }
+.primary-button, .secondary-button {
+  border-radius: 14px; padding: 14px 20px; border: 1px solid transparent; font-weight: 800; transition: .18s ease;
+}
+.primary-button { background: var(--red); color: white; box-shadow: 0 10px 22px rgba(159,18,57,.2); }
+.primary-button:hover { background: var(--red-dark); transform: translateY(-1px); }
+.primary-button:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+.secondary-button { background: white; color: var(--ink); border-color: var(--line); }
+.secondary-button:hover { border-color: var(--red); color: var(--red); }
+.privacy-note { color: var(--muted); font-size: 13px; }
+.privacy-note span { color: var(--green); font-size: 9px; }
+
+.progress-card { padding: 30px; border: 1px solid #eadfcd; background: rgba(255,255,255,.82); border-radius: 28px; box-shadow: var(--shadow); backdrop-filter: blur(8px); }
+.progress-card-top { display: flex; justify-content: space-between; align-items: center; }
+.progress-card-top p { margin: 0 0 5px; color: var(--muted); font-size: 11px; font-weight: 850; letter-spacing: .12em; }
+.progress-card-top strong { font: 700 44px/1 var(--serif); }
+.progress-ring, .result-ring { display: grid; place-items: center; border-radius: 50%; background: conic-gradient(var(--red) 0deg, #eee5d8 0deg); }
+.progress-ring { width: 72px; height: 72px; position: relative; }
+.progress-ring::after { content: ""; position: absolute; inset: 7px; border-radius: 50%; background: white; }
+.progress-ring span { position: relative; z-index: 1; color: var(--gold); }
+.progress-track, .quiz-progress { height: 8px; overflow: hidden; background: #eee6da; border-radius: 999px; }
+.progress-track { margin: 26px 0; }
+.progress-track span, .quiz-progress span { display: block; width: 0; height: 100%; background: var(--red); transition: width .3s ease; }
+.progress-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.progress-stats div { padding-right: 8px; border-right: 1px solid var(--line); }
+.progress-stats div:last-child { border: 0; }
+.progress-stats span, .progress-stats b { display: block; }
+.progress-stats span { color: var(--muted); font-size: 12px; }
+.progress-stats b { font: 700 25px var(--serif); }
+
+.mode-section, .topic-section { margin-top: 82px; }
+.section-heading { display: flex; justify-content: space-between; align-items: end; gap: 18px; margin-bottom: 24px; }
+.section-heading h2 { margin: 0; font: 700 clamp(28px, 4vw, 42px)/1.1 var(--serif); }
+.question-total { color: var(--muted); font-size: 14px; }
+.mode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.mode-card {
+  display: grid; grid-template-columns: 56px 1fr auto; gap: 14px; align-items: center; text-align: left;
+  min-height: 124px; padding: 22px; border: 1px solid var(--line); border-radius: 20px; background: white; color: var(--ink); transition: .18s ease;
+}
+.mode-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: #d7c5aa; }
+.mode-card b, .mode-card small { display: block; }
+.mode-card b { font: 700 20px var(--serif); margin-bottom: 4px; }
+.mode-card small { color: var(--muted); }
+.mode-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; background: var(--cream); color: var(--red); font-size: 24px; }
+.arrow { color: var(--red); font-weight: 900; }
+.mode-card:disabled { opacity: .55; cursor: not-allowed; transform: none; box-shadow: none; }
+
+.topic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.topic-card { min-height: 170px; padding: 22px; border: 1px solid var(--line); border-radius: 20px; background: #fbf8f2; text-align: left; color: var(--ink); transition: .18s ease; }
+.topic-card:hover { background: white; border-color: var(--red); transform: translateY(-2px); }
+.topic-card .topic-index { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--red); color: white; font-size: 12px; font-weight: 800; }
+.topic-card b, .topic-card small { display: block; }
+.topic-card b { margin: 18px 0 6px; font: 700 20px var(--serif); }
+.topic-card small { color: var(--muted); }
+.study-tip { margin: 82px 0 0; padding: 30px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.tip-number { font: 700 42px var(--serif); color: var(--red); }
+.study-tip b { font: 700 20px var(--serif); }
+.study-tip p { margin: 4px 0 0; color: var(--muted); }
+
+.quiz-view { min-height: calc(100vh - 96px); padding: 30px 0 70px; }
+.quiz-shell { max-width: 820px; margin: 0 auto; }
+.quiz-toolbar { display: grid; grid-template-columns: 48px 1fr auto; gap: 16px; align-items: center; }
+.icon-button { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: white; }
+.quiz-title small, .quiz-title b { display: block; }
+.quiz-title small { color: var(--red); font-size: 11px; font-weight: 850; letter-spacing: .12em; }
+.quiz-title b { font-family: var(--serif); font-size: 20px; }
+.timer { padding: 8px 13px; border-radius: 999px; background: #f3ece1; font-weight: 850; font-variant-numeric: tabular-nums; }
+.timer.warning { background: var(--danger-soft); color: var(--red); }
+.quiz-progress-row { margin: 28px 0 18px; display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; color: var(--muted); font-size: 13px; }
+.quiz-progress { height: 6px; }
+.question-card { padding: clamp(24px, 5vw, 48px); border: 1px solid var(--line); border-radius: 28px; background: white; box-shadow: var(--shadow); }
+.question-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+.question-meta span { color: var(--red); font-size: 12px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.question-meta button { border: 0; background: transparent; color: var(--gold); font-size: 25px; }
+.question-card h2 { margin-bottom: 28px; font: 700 clamp(23px, 3.5vw, 33px)/1.28 var(--serif); letter-spacing: 0; }
+.answers { display: grid; gap: 12px; }
+.answer {
+  width: 100%; display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: center; text-align: left;
+  padding: 15px 17px; border: 1px solid var(--line); border-radius: 15px; background: #fffdfa; color: var(--ink);
+}
+.answer:hover:not(:disabled) { border-color: #b89a71; background: #fffaf1; }
+.answer.selected { border-color: var(--red); background: #fff5f6; }
+.answer.correct { border-color: var(--green); background: var(--green-soft); }
+.answer.wrong { border-color: var(--red); background: var(--danger-soft); }
+.answer-key { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; border: 1px solid #d7ccbd; font-weight: 850; }
+.answer.selected .answer-key { background: var(--red); border-color: var(--red); color: white; }
+.answer.correct .answer-key { background: var(--green); border-color: var(--green); color: white; }
+.explanation { margin-top: 20px; padding: 17px 20px; border-radius: 15px; background: #f5f0e7; color: #4b5563; }
+.explanation b { color: var(--ink); }
+.question-actions { margin-top: 26px; display: flex; justify-content: space-between; gap: 12px; }
+.small { padding: 11px 16px; }
+
+.result-view { min-height: calc(100vh - 96px); padding: 40px 0 80px; display: grid; place-items: center; }
+.result-card { width: min(650px, 100%); padding: clamp(30px, 7vw, 60px); text-align: center; background: white; border: 1px solid var(--line); border-radius: 30px; box-shadow: var(--shadow); }
+.result-ring { width: 160px; height: 160px; margin: 24px auto; position: relative; }
+.result-ring::after { content: ""; position: absolute; inset: 12px; border-radius: 50%; background: white; }
+.result-ring strong, .result-ring span { position: relative; z-index: 1; display: block; }
+.result-ring strong { font: 700 42px var(--serif); }
+.result-ring span { color: var(--muted); font-size: 12px; }
+.result-card h2 { font: 700 34px var(--serif); margin-bottom: 8px; }
+.result-card > p:not(.eyebrow) { color: var(--muted); }
+.result-stats { margin: 28px 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.result-stats div { padding: 18px 8px; border-right: 1px solid var(--line); }
+.result-stats div:last-child { border: 0; }
+.result-stats span, .result-stats b { display: block; }
+.result-stats span { color: var(--muted); font-size: 12px; }
+.result-stats b { font: 700 26px var(--serif); }
+.result-actions { justify-content: center; }
+.text-button { width: 100%; padding: 8px; color: var(--muted); }
+
+.toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; background: #20242b; color: white; padding: 11px 18px; border-radius: 999px; box-shadow: var(--shadow); transition: .2s ease; z-index: 20; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+footer { padding: 24px 20px 36px; text-align: center; color: var(--muted); font-size: 12px; }
+footer p { margin: 0; }
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+  .progress-card { max-width: 620px; }
+  .mode-grid { grid-template-columns: 1fr; }
+  .topic-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+  .topbar, main { width: min(100% - 26px, 1160px); }
+  .topbar { padding-top: 16px; }
+  .brand small { display: none; }
+  .ghost-button { padding: 9px 12px; font-size: 13px; }
+  .home-view { padding-top: 24px; }
+  .hero-grid { min-height: auto; }
+  h1 { font-size: 45px; }
+  .hero-text { font-size: 16px; }
+  .hero-actions > button { width: 100%; }
+  .progress-card { padding: 22px; }
+  .mode-section, .topic-section { margin-top: 60px; }
+  .section-heading { display: block; }
+  .question-total { display: block; margin-top: 8px; }
+  .topic-grid { grid-template-columns: 1fr; }
+  .study-tip { grid-template-columns: 1fr; }
+  .quiz-view { padding-top: 8px; }
+  .quiz-progress-row { grid-template-columns: auto auto; }
+  .quiz-progress { grid-column: 1 / -1; grid-row: 2; }
+  .question-card { border-radius: 22px; }
+  .question-actions { flex-wrap: wrap; }
+  .question-actions button { flex: 1; }
+  .result-card { border-radius: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+}
+
+</style>
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Về trang chủ">
+      <span class="brand-mark" aria-hidden="true">★</span>
+      <span><b>Hành trang 22·12</b><small>Ôn tập truyền thống</small></span>
+    </a>
+    <button id="shareButton" class="ghost-button" type="button" aria-label="Chia sẻ trang ôn tập">
+      <span aria-hidden="true">↗</span> Chia sẻ
+    </button>
+  </header>
+
+  <div id="compatibilityNotice" class="compatibility-banner" role="alert">
+    Trình xem tệp trên iPhone đang chặn JavaScript. Hãy mở trang bằng Safari hoặc dùng một đường link website để các nút hoạt động.
+  </div>
+
+  <main>
+    <section id="homeView" class="view home-view">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">BỘ CÂU HỎI ÔN TẬP</p>
+          <h1>Nhớ chắc kiến thức.<br><span>Thi thử tự tin.</span></h1>
+          <p class="hero-text">Học theo từng chủ đề, nhận giải thích ngay sau mỗi câu và luyện lại riêng những câu bạn còn nhầm.</p>
+          <div class="hero-actions">
+            <button class="primary-button" type="button" data-start-mode="practice">Bắt đầu ôn tập <span>→</span></button>
+            <button class="secondary-button" type="button" data-start-mode="exam">Thi thử 20 câu</button>
+          </div>
+          <p class="privacy-note"><span aria-hidden="true">●</span> Tiến độ chỉ được lưu trên thiết bị của bạn</p>
+        </div>
+
+        <aside class="progress-card" aria-label="Tiến độ học tập">
+          <div class="progress-card-top">
+            <div>
+              <p>TIẾN ĐỘ CỦA BẠN</p>
+              <strong id="progressPercent">0%</strong>
+            </div>
+            <div class="progress-ring" id="progressRing" aria-hidden="true"><span>★</span></div>
+          </div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+          <div class="progress-stats">
+            <div><span>Đã ôn</span><b id="studiedCount">0</b></div>
+            <div><span>Đúng</span><b id="correctCount">0</b></div>
+            <div><span>Cần ôn lại</span><b id="wrongCount">0</b></div>
+          </div>
+        </aside>
+      </div>
+
+      <section class="mode-section" aria-labelledby="modeTitle">
+        <div class="section-heading">
+          <div><p class="eyebrow">CHỌN CÁCH HỌC</p><h2 id="modeTitle">Học theo nhịp của bạn</h2></div>
+          <span id="questionTotal" class="question-total"></span>
+        </div>
+        <div class="mode-grid">
+          <button class="mode-card practice" type="button" data-start-mode="practice">
+            <span class="mode-icon">◎</span>
+            <span><b>Ôn từng câu</b><small>Xem đáp án và giải thích ngay</small></span>
+            <span class="arrow">→</span>
+          </button>
+          <button class="mode-card exam" type="button" data-start-mode="exam">
+            <span class="mode-icon">⌁</span>
+            <span><b>Thi thử</b><small>20 câu ngẫu nhiên · 15 phút</small></span>
+            <span class="arrow">→</span>
+          </button>
+          <button class="mode-card mistakes" id="mistakesButton" type="button">
+            <span class="mode-icon">↻</span>
+            <span><b>Ôn câu sai</b><small id="mistakesLabel">Chưa có câu cần ôn lại</small></span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="topic-section" aria-labelledby="topicTitle">
+        <div class="section-heading">
+          <div><p class="eyebrow">HỌC THEO CHỦ ĐỀ</p><h2 id="topicTitle">Chọn phần bạn muốn củng cố</h2></div>
+        </div>
+        <div id="topicGrid" class="topic-grid"></div>
+      </section>
+
+      <section class="study-tip">
+        <div class="tip-number">3×</div>
+        <div><b>Mẹo nhớ lâu</b><p>Ôn lại câu sai sau 1 ngày, 3 ngày và 7 ngày. Mỗi lượt ngắn 10–15 phút thường hiệu quả hơn học dồn.</p></div>
+      </section>
+    </section>
+
+    <section id="quizView" class="view quiz-view hidden" aria-live="polite">
+      <div class="quiz-shell">
+        <div class="quiz-toolbar">
+          <button id="exitQuiz" class="icon-button" type="button" aria-label="Thoát bài">←</button>
+          <div class="quiz-title"><small id="quizModeLabel">ÔN TẬP</small><b id="quizTopicLabel">Tổng hợp</b></div>
+          <div id="timer" class="timer hidden">15:00</div>
+        </div>
+        <div class="quiz-progress-row">
+          <span id="questionNumber">Câu 1/20</span>
+          <div class="quiz-progress"><span id="quizProgressBar"></span></div>
+          <span id="liveScore">0 đúng</span>
+        </div>
+        <article class="question-card">
+          <div class="question-meta"><span id="questionTopic"></span><button id="bookmarkButton" type="button" aria-label="Đánh dấu câu hỏi">☆</button></div>
+          <h2 id="questionText"></h2>
+          <div id="answers" class="answers"></div>
+          <div id="explanation" class="explanation hidden"></div>
+          <div class="question-actions">
+            <button id="previousButton" class="secondary-button small" type="button">← Câu trước</button>
+            <button id="checkButton" class="primary-button small" type="button" disabled>Kiểm tra</button>
+            <button id="nextButton" class="primary-button small hidden" type="button">Câu tiếp →</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="resultView" class="view result-view hidden" aria-live="polite">
+      <div class="result-card">
+        <p class="eyebrow">KẾT QUẢ</p>
+        <div id="resultRing" class="result-ring"><strong id="resultPercent">0%</strong><span>chính xác</span></div>
+        <h2 id="resultTitle">Hoàn thành lượt ôn tập</h2>
+        <p id="resultMessage"></p>
+        <div class="result-stats">
+          <div><span>Đúng</span><b id="resultCorrect">0</b></div>
+          <div><span>Sai</span><b id="resultWrong">0</b></div>
+          <div><span>Điểm</span><b id="resultScore">0/10</b></div>
+        </div>
+        <div class="result-actions">
+          <button id="reviewWrongButton" class="secondary-button" type="button">Xem lại câu sai</button>
+          <button id="restartButton" class="primary-button" type="button">Làm lượt mới</button>
+          <button id="backHomeButton" class="text-button" type="button">Về trang chủ</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status"></div>
+  <footer><p>Nội dung được biên soạn từ tài liệu ôn tập đã cung cấp · Không hiển thị thông tin cá nhân trong tài liệu gốc.</p></footer>
+  <script>
+window.QUIZ_TOPICS = [
+  { id: "khoi-nguon", name: "Khởi nguồn Quân đội", description: "Ngày thành lập, đội ngũ đầu tiên và tư tưởng chỉ đạo" },
+  { id: "chong-phap", name: "Kháng chiến chống Pháp", description: "Việt Bắc, Biên giới, Tây Bắc và Điện Biên Phủ" },
+  { id: "chong-my", name: "Kháng chiến chống Mỹ", description: "Các chiến lược, thắng lợi và mùa Xuân 1975" },
+  { id: "bao-ve", name: "Xây dựng và bảo vệ Tổ quốc", description: "Giai đoạn sau 1975 và vai trò của Quân đội" },
+  { id: "xay-dung", name: "Xây dựng Quân đội thời kỳ mới", description: "Chính trị, huấn luyện, khoa học và công nghiệp quốc phòng" },
+  { id: "quoc-phong", name: "Ngày hội Quốc phòng toàn dân", description: "Mốc thời gian, ý nghĩa và trách nhiệm của toàn dân" }
+];
+
+window.QUIZ_QUESTIONS = [
+  {
+    id: 1, topic: "khoi-nguon",
+    question: "Đội Việt Nam Tuyên truyền Giải phóng quân được thành lập vào ngày nào?",
+    options: ["22/12/1944", "22/12/1945", "19/8/1945", "2/9/1945"], answer: 0,
+    explanation: "Ngày 22/12/1944 là ngày thành lập Đội Việt Nam Tuyên truyền Giải phóng quân, tiền thân của Quân đội nhân dân Việt Nam."
+  },
+  {
+    id: 2, topic: "khoi-nguon",
+    question: "Lễ thành lập Đội Việt Nam Tuyên truyền Giải phóng quân diễn ra tại địa bàn nào?",
+    options: ["Xã Tam Kim, huyện Nguyên Bình, tỉnh Cao Bằng", "Huyện Định Hóa, tỉnh Thái Nguyên", "Huyện Bắc Sơn, tỉnh Lạng Sơn", "Huyện Tân Trào, tỉnh Tuyên Quang"], answer: 0,
+    explanation: "Lễ thành lập diễn ra trong khu rừng giữa hai tổng Trần Hưng Đạo và Hoàng Hoa Thám, nay thuộc xã Tam Kim, huyện Nguyên Bình, tỉnh Cao Bằng."
+  },
+  {
+    id: 3, topic: "khoi-nguon",
+    question: "Ai là Đội trưởng đầu tiên của Đội Việt Nam Tuyên truyền Giải phóng quân?",
+    options: ["Hoàng Sâm", "Xích Thắng", "Võ Nguyên Giáp", "Phùng Chí Kiên"], answer: 0,
+    explanation: "Đồng chí Hoàng Sâm được cử làm Đội trưởng đầu tiên."
+  },
+  {
+    id: 4, topic: "khoi-nguon",
+    question: "Ai là Chính trị viên đầu tiên của Đội Việt Nam Tuyên truyền Giải phóng quân?",
+    options: ["Xích Thắng (Dương Mạc Thạch)", "Hoàng Sâm", "Hoàng Văn Thái", "Lê Trọng Tấn"], answer: 0,
+    explanation: "Đồng chí Xích Thắng, tên thật Dương Mạc Thạch, là Chính trị viên đầu tiên."
+  },
+  {
+    id: 5, topic: "khoi-nguon",
+    question: "Khi mới thành lập, Đội Việt Nam Tuyên truyền Giải phóng quân có bao nhiêu chiến sĩ?",
+    options: ["34", "22", "45", "60"], answer: 0,
+    explanation: "Đội có 34 chiến sĩ và 34 khẩu súng các loại."
+  },
+  {
+    id: 6, topic: "khoi-nguon",
+    question: "Hai trận thắng đầu tiên của Đội Việt Nam Tuyên truyền Giải phóng quân là những trận nào?",
+    options: ["Phay Khắt và Nà Ngần", "Đông Khê và Thất Khê", "Hòa Bình và Tây Bắc", "Việt Bắc và Biên giới"], answer: 0,
+    explanation: "Chỉ hai ngày sau khi thành lập, Đội đã thắng liên tiếp ở Phay Khắt và Nà Ngần."
+  },
+  {
+    id: 7, topic: "khoi-nguon",
+    question: "Tư tưởng chỉ đạo khi thành lập Đội nhấn mạnh lực lượng vũ trang nào?",
+    options: ["Ba thứ quân và kháng chiến toàn dân", "Chỉ xây dựng quân chủ lực", "Chỉ phát triển dân quân địa phương", "Tập trung hoàn toàn vào phòng thủ"], answer: 0,
+    explanation: "Tư tưởng chỉ đạo dựa trên quan điểm về lực lượng vũ trang ba thứ quân và kháng chiến toàn dân."
+  },
+  {
+    id: 8, topic: "khoi-nguon",
+    question: "Tháng 4/1945, các tổ chức vũ trang cách mạng được hợp nhất thành lực lượng nào?",
+    options: ["Việt Nam Giải phóng quân", "Vệ quốc đoàn", "Quân đội quốc gia Việt Nam", "Cứu quốc quân"], answer: 0,
+    explanation: "Hội nghị quân sự cách mạng Bắc Kỳ quyết định hợp nhất các tổ chức vũ trang thành Việt Nam Giải phóng quân."
+  },
+  {
+    id: 9, topic: "khoi-nguon",
+    question: "Tên gọi Quân đội nhân dân Việt Nam được sử dụng từ năm nào?",
+    options: ["1950", "1944", "1946", "1954"], answer: 0,
+    explanation: "Sau các tên gọi Việt Nam Giải phóng quân, Vệ quốc đoàn và Quân đội quốc gia Việt Nam, tên Quân đội nhân dân Việt Nam được dùng từ năm 1950."
+  },
+  {
+    id: 10, topic: "chong-phap",
+    question: "Chiến dịch Việt Bắc Thu - Đông 1947 đã làm phá sản chiến lược nào của thực dân Pháp?",
+    options: ["Đánh nhanh, thắng nhanh", "Chiến tranh đặc biệt", "Việt Nam hóa chiến tranh", "Tìm diệt và bình định"], answer: 0,
+    explanation: "Chiến thắng Việt Bắc làm phá sản chiến lược “đánh nhanh, thắng nhanh” của thực dân Pháp."
+  },
+  {
+    id: 11, topic: "chong-phap",
+    question: "Chiến dịch Việt Bắc Thu - Đông 1947 diễn ra trong khoảng thời gian nào?",
+    options: ["7/10 đến 20/12/1947", "16/9 đến 14/10/1950", "14/10 đến 10/12/1952", "13/3 đến 7/5/1954"], answer: 0,
+    explanation: "Cuộc phản công Việt Bắc diễn ra hơn hai tháng, từ 7/10 đến 20/12/1947."
+  },
+  {
+    id: 12, topic: "chong-phap",
+    question: "Đại đoàn 308 được thành lập vào ngày nào?",
+    options: ["28/8/1949", "10/3/1950", "5/12/1952", "22/12/1944"], answer: 0,
+    explanation: "Đại đoàn 308 ra đời ngày 28/8/1949."
+  },
+  {
+    id: 13, topic: "chong-phap",
+    question: "Kết quả nổi bật của Chiến dịch Biên giới năm 1950 là gì?",
+    options: ["Khai thông liên lạc với Trung Quốc và các nước xã hội chủ nghĩa", "Giải phóng hoàn toàn miền Nam", "Buộc Mỹ rút quân khỏi Việt Nam", "Thành lập Việt Nam Giải phóng quân"], answer: 0,
+    explanation: "Chiến dịch giải phóng khu vực biên giới, phá thế bao vây và khai thông liên lạc quốc tế."
+  },
+  {
+    id: 14, topic: "chong-phap",
+    question: "Chiến dịch Biên giới năm 1950 diễn ra trong khoảng thời gian nào?",
+    options: ["16/9 đến 14/10/1950", "7/10 đến 20/12/1947", "14/10 đến 10/12/1952", "13/3 đến 7/5/1954"], answer: 0,
+    explanation: "Chiến dịch Biên giới diễn ra từ 16/9 đến 14/10/1950."
+  },
+  {
+    id: 15, topic: "chong-phap",
+    question: "Chiến dịch Tây Bắc năm 1952 đã giải phóng một vùng rộng lớn và nối thông Tây Bắc với những địa bàn nào?",
+    options: ["Việt Bắc và Thượng Lào", "Liên khu 5 và Tây Nguyên", "Nam Bộ và Campuchia", "Đồng bằng Bắc Bộ và ven biển"], answer: 0,
+    explanation: "Chiến dịch nối vùng giải phóng Tây Bắc với căn cứ địa Việt Bắc và Thượng Lào."
+  },
+  {
+    id: 16, topic: "chong-phap",
+    question: "Bộ Chính trị quyết định mở Chiến dịch Điện Biên Phủ vào ngày nào?",
+    options: ["6/12/1953", "13/3/1954", "7/5/1954", "2/9/1953"], answer: 0,
+    explanation: "Ngày 6/12/1953, Bộ Chính trị họp và quyết định mở Chiến dịch Điện Biên Phủ."
+  },
+  {
+    id: 17, topic: "chong-phap",
+    question: "Chiến dịch Điện Biên Phủ kéo dài bao nhiêu ngày đêm?",
+    options: ["56 ngày đêm", "45 ngày đêm", "60 ngày đêm", "81 ngày đêm"], answer: 0,
+    explanation: "Chiến dịch diễn ra liên tục 56 ngày đêm, từ 13/3 đến 7/5/1954."
+  },
+  {
+    id: 18, topic: "chong-phap",
+    question: "Chiến thắng Điện Biên Phủ buộc thực dân Pháp phải ký kết văn kiện nào?",
+    options: ["Hiệp định Giơ-ne-vơ", "Hiệp định Pa-ri", "Hiệp định Sơ bộ", "Tạm ước 14/9"], answer: 0,
+    explanation: "Chiến thắng tạo đòn quyết định, buộc Pháp ký Hiệp định Giơ-ne-vơ về đình chỉ chiến sự ở Việt Nam."
+  },
+  {
+    id: 19, topic: "chong-my",
+    question: "Quân Giải phóng miền Nam Việt Nam được thành lập vào ngày nào?",
+    options: ["15/2/1961", "20/12/1960", "30/4/1975", "27/1/1973"], answer: 0,
+    explanation: "Ngày 15/2/1961, Quân ủy Trung ương quyết định thành lập Quân Giải phóng miền Nam Việt Nam."
+  },
+  {
+    id: 20, topic: "chong-my",
+    question: "Trong giai đoạn 1964–1968, quân và dân miền Bắc bắn rơi bao nhiêu máy bay các loại theo tài liệu?",
+    options: ["3.243", "1.200", "4.000", "2.315"], answer: 0,
+    explanation: "Theo tài liệu, quân và dân miền Bắc bắn rơi 3.243 máy bay các loại trong bốn năm 1964–1968."
+  },
+  {
+    id: 21, topic: "chong-my",
+    question: "Tổng tiến công và nổi dậy Xuân Mậu Thân diễn ra vào năm nào?",
+    options: ["1968", "1965", "1972", "1975"], answer: 0,
+    explanation: "Cuộc Tổng tiến công và nổi dậy Xuân Mậu Thân diễn ra năm 1968."
+  },
+  {
+    id: 22, topic: "chong-my",
+    question: "Sau thất bại của chiến lược “Chiến tranh cục bộ”, Mỹ chuyển sang chiến lược nào?",
+    options: ["Việt Nam hóa chiến tranh", "Đánh nhanh, thắng nhanh", "Chiến tranh đặc biệt", "Chiến tranh đơn phương"], answer: 0,
+    explanation: "Từ năm 1969, Mỹ thực hiện “Học thuyết Ních-xơn” và chiến lược “Việt Nam hóa chiến tranh”."
+  },
+  {
+    id: 23, topic: "chong-my",
+    question: "Trận “Điện Biên Phủ trên không” gắn với cuộc chiến đấu chống loại máy bay nào?",
+    options: ["B-52", "MiG-21", "F-5", "C-130"], answer: 0,
+    explanation: "Quân và dân miền Bắc đánh thắng cuộc tập kích chiến lược bằng B-52 của Mỹ trên bầu trời Hà Nội."
+  },
+  {
+    id: 24, topic: "chong-my",
+    question: "Chiến dịch nào mở đầu cuộc Tổng tiến công và nổi dậy mùa Xuân 1975?",
+    options: ["Chiến dịch Tây Nguyên", "Chiến dịch Huế - Đà Nẵng", "Chiến dịch Hồ Chí Minh", "Chiến dịch Đường 9 - Nam Lào"], answer: 0,
+    explanation: "Chiến dịch Tây Nguyên mở đầu cuộc Tổng tiến công và nổi dậy mùa Xuân 1975."
+  },
+  {
+    id: 25, topic: "chong-my",
+    question: "Chiến dịch nào đưa cuộc kháng chiến chống Mỹ đến thắng lợi hoàn toàn?",
+    options: ["Chiến dịch Hồ Chí Minh", "Chiến dịch Việt Bắc", "Chiến dịch Biên giới", "Chiến dịch Tây Bắc"], answer: 0,
+    explanation: "Chiến dịch Hồ Chí Minh toàn thắng, miền Nam hoàn toàn giải phóng."
+  },
+  {
+    id: 26, topic: "bao-ve",
+    question: "Thủ đô Phnôm Pênh được giải phóng khỏi chế độ diệt chủng Pôn Pốt vào ngày nào?",
+    options: ["7/1/1979", "30/4/1975", "17/2/1979", "6/3/1979"], answer: 0,
+    explanation: "Lực lượng cách mạng Campuchia và Quân tình nguyện Việt Nam giải phóng Phnôm Pênh ngày 7/1/1979."
+  },
+  {
+    id: 27, topic: "bao-ve",
+    question: "Cuộc chiến đấu bảo vệ biên giới phía Bắc năm 1979 diễn ra trực tiếp trong khoảng thời gian nào?",
+    options: ["17/2 đến 6/3/1979", "7/1 đến 17/2/1979", "30/4 đến 7/5/1979", "2/9 đến 22/12/1979"], answer: 0,
+    explanation: "Cuộc chiến đấu diễn ra từ 17/2 đến 6/3/1979, dù tình hình căng thẳng kéo dài nhiều năm sau đó."
+  },
+  {
+    id: 28, topic: "bao-ve",
+    question: "Ba chức năng cơ bản của Quân đội trong thời kỳ đổi mới được nêu trong tài liệu là gì?",
+    options: ["Đội quân chiến đấu, công tác và lao động sản xuất", "Chiến đấu, ngoại giao và thương mại", "Huấn luyện, nghiên cứu và thi đấu", "Sản xuất, xuất khẩu và cứu trợ"], answer: 0,
+    explanation: "Quân đội thực hiện tốt chức năng đội quân chiến đấu, đội quân công tác và đội quân lao động sản xuất."
+  },
+  {
+    id: 29, topic: "bao-ve",
+    question: "Hoạt động nào dưới đây thuộc công tác dân vận của Quân đội?",
+    options: ["Giúp dân phòng chống thiên tai, cứu hộ cứu nạn", "Chỉ tập trung huấn luyện trong doanh trại", "Quản lý hoạt động thương mại dân sự", "Thay thế chính quyền cơ sở"], answer: 0,
+    explanation: "Công tác dân vận gồm hỗ trợ phát triển đời sống, phòng chống thiên tai, khắc phục thảm họa và cứu hộ cứu nạn."
+  },
+  {
+    id: 30, topic: "xay-dung",
+    question: "Mục tiêu xây dựng Quân đội nhân dân Việt Nam trong thời kỳ mới được khái quát như thế nào?",
+    options: ["Cách mạng, chính quy, tinh nhuệ, từng bước hiện đại", "Đông về số lượng, nhẹ về chất lượng", "Chỉ hiện đại hóa lực lượng lục quân", "Tập trung hoàn toàn vào sản xuất kinh tế"], answer: 0,
+    explanation: "Mục tiêu là xây dựng Quân đội cách mạng, chính quy, tinh nhuệ, từng bước hiện đại; một số lực lượng tiến thẳng lên hiện đại."
+  },
+  {
+    id: 31, topic: "xay-dung",
+    question: "Theo định hướng trong tài liệu, từ năm nào phấn đấu xây dựng Quân đội hiện đại?",
+    options: ["2030", "2025", "2035", "2045"], answer: 0,
+    explanation: "Tài liệu nêu mục tiêu phấn đấu từ năm 2030 xây dựng Quân đội hiện đại."
+  },
+  {
+    id: 32, topic: "xay-dung",
+    question: "Yếu tố nào được coi là cơ sở để nâng cao chất lượng tổng hợp và sức mạnh chiến đấu của Quân đội?",
+    options: ["Xây dựng Quân đội vững mạnh về chính trị", "Tăng quân số bằng mọi giá", "Chỉ mua sắm vũ khí nước ngoài", "Giảm hoạt động huấn luyện"], answer: 0,
+    explanation: "Xây dựng vững mạnh về chính trị là cơ sở nâng cao chất lượng tổng hợp, sức mạnh và khả năng sẵn sàng chiến đấu."
+  },
+  {
+    id: 33, topic: "xay-dung",
+    question: "Tổ chức Quân đội cần bảo đảm sự cân đối giữa những lực lượng nào?",
+    options: ["Bộ đội chủ lực, Bộ đội địa phương và Dân quân tự vệ", "Chỉ Bộ đội chủ lực và Công an", "Chỉ lực lượng thường trực", "Chỉ các quân chủng kỹ thuật"], answer: 0,
+    explanation: "Tổ chức phải đồng bộ, cân đối giữa Bộ đội chủ lực, Bộ đội địa phương và Dân quân tự vệ, cùng các thành phần khác."
+  },
+  {
+    id: 34, topic: "xay-dung",
+    question: "Phương châm huấn luyện được nêu trong tài liệu là gì?",
+    options: ["Cơ bản, thiết thực, vững chắc", "Nhanh, mạnh, bất ngờ", "Tập trung, thống nhất, tuyệt đối", "Tinh gọn, cơ động, bí mật"], answer: 0,
+    explanation: "Huấn luyện thực hiện theo phương châm “cơ bản, thiết thực, vững chắc”."
+  },
+  {
+    id: 35, topic: "xay-dung",
+    question: "Mục đích quan trọng của diễn tập thường xuyên là gì?",
+    options: ["Rèn luyện chỉ huy, hiệp đồng và xử trí tình huống", "Thay thế hoàn toàn huấn luyện cơ bản", "Chỉ kiểm tra thể lực cá nhân", "Giảm yêu cầu sẵn sàng chiến đấu"], answer: 0,
+    explanation: "Diễn tập giúp rèn năng lực lãnh đạo, chỉ huy, hiệp đồng bảo đảm tác chiến và xử trí tình huống."
+  },
+  {
+    id: 36, topic: "xay-dung",
+    question: "Việt Nam tham gia huấn luyện quốc tế về an ninh phi truyền thống trên cơ sở nào?",
+    options: ["Tôn trọng độc lập, chủ quyền và phù hợp luật pháp quốc tế", "Không cần xét đến lợi ích quốc gia", "Chỉ theo yêu cầu của nước ngoài", "Không chịu sự điều chỉnh của pháp luật"], answer: 0,
+    explanation: "Việc hợp tác phải tôn trọng độc lập, chủ quyền, bảo đảm lợi ích quốc gia - dân tộc và phù hợp luật pháp."
+  },
+  {
+    id: 37, topic: "xay-dung",
+    question: "Nội dung nào thuộc nghiên cứu khoa học quân sự?",
+    options: ["Nghệ thuật quân sự, hậu cần và kỹ thuật quân sự", "Chỉ nghiên cứu lịch sử cổ đại", "Chỉ nghiên cứu thể thao", "Chỉ nghiên cứu kinh tế dân sự"], answer: 0,
+    explanation: "Nghiên cứu khoa học bao gồm nghệ thuật quân sự, khoa học xã hội nhân văn quân sự, hậu cần và kỹ thuật quân sự."
+  },
+  {
+    id: 38, topic: "xay-dung",
+    question: "Chủ trương đối với vũ khí, trang bị hiện có là gì?",
+    options: ["Giữ gìn, bảo quản tốt và cải tiến có chọn lọc", "Loại bỏ toàn bộ để mua mới", "Chỉ sử dụng mà không bảo quản", "Chuyển hết sang mục đích dân sự"], answer: 0,
+    explanation: "Tài liệu nhấn mạnh giữ gìn, bảo quản tốt, cải tiến có chọn lọc và kết hợp tự sản xuất, mua sắm cần thiết."
+  },
+  {
+    id: 39, topic: "xay-dung",
+    question: "Công nghiệp quốc phòng được xác định là bộ phận cấu thành của nền công nghiệp nào?",
+    options: ["Công nghiệp quốc gia", "Công nghiệp địa phương", "Công nghiệp dịch vụ", "Công nghiệp nước ngoài"], answer: 0,
+    explanation: "Công nghiệp quốc phòng là bộ phận cấu thành của nền công nghiệp quốc gia và được phát triển theo hướng lưỡng dụng."
+  },
+  {
+    id: 40, topic: "xay-dung",
+    question: "Đến năm 2030, công nghiệp quốc phòng phấn đấu đạt mục tiêu nào?",
+    options: ["Có sức cạnh tranh quốc tế và tham gia sâu vào chuỗi giá trị toàn cầu", "Chỉ phục vụ một địa phương", "Ngừng hợp tác quốc tế", "Tách hoàn toàn khỏi công nghiệp quốc gia"], answer: 0,
+    explanation: "Tài liệu đặt mục tiêu nâng sức cạnh tranh quốc tế và tham gia sâu vào chuỗi giá trị toàn cầu."
+  },
+  {
+    id: 41, topic: "quoc-phong",
+    question: "Ban Bí thư Trung ương Đảng quyết định lấy ngày 22/12 là Ngày hội Quốc phòng toàn dân vào ngày nào?",
+    options: ["17/10/1989", "22/12/1989", "22/12/1944", "17/10/1990"], answer: 0,
+    explanation: "Ngày 17/10/1989, Ban Bí thư Trung ương Đảng khóa VI ban hành Chỉ thị số 381-CT/TW."
+  },
+  {
+    id: 42, topic: "quoc-phong",
+    question: "Ngày hội Quốc phòng toàn dân lần đầu tiên được tổ chức trên cả nước vào ngày nào?",
+    options: ["22/12/1989", "17/10/1989", "22/12/1990", "2/9/1989"], answer: 0,
+    explanation: "Ngày hội lần đầu được tổ chức ở tất cả các địa phương vào 22/12/1989."
+  },
+  {
+    id: 43, topic: "quoc-phong",
+    question: "Lực lượng nào làm nòng cốt trong xây dựng, củng cố quốc phòng và bảo vệ Tổ quốc?",
+    options: ["Lực lượng vũ trang nhân dân", "Các doanh nghiệp tư nhân", "Các tổ chức quốc tế", "Chỉ lực lượng thanh niên"], answer: 0,
+    explanation: "Quan điểm quốc phòng toàn dân xác định toàn dân tham gia, trong đó lực lượng vũ trang nhân dân làm nòng cốt."
+  },
+  {
+    id: 44, topic: "quoc-phong",
+    question: "Ngày hội Quốc phòng toàn dân góp phần tôn vinh hình ảnh nào?",
+    options: ["Bộ đội Cụ Hồ", "Thanh niên xung phong", "Công nhân thời kỳ mới", "Doanh nhân Việt Nam"], answer: 0,
+    explanation: "Ngày hội tôn vinh và nhân lên hình ảnh cao đẹp “Bộ đội Cụ Hồ”."
+  },
+  {
+    id: 45, topic: "quoc-phong",
+    question: "Một ý nghĩa quan trọng của Ngày hội Quốc phòng toàn dân là gì?",
+    options: ["Nâng cao nhận thức và trách nhiệm của toàn dân trong bảo vệ Tổ quốc", "Chỉ tổ chức hoạt động văn nghệ", "Thay thế nhiệm vụ của lực lượng vũ trang", "Giới hạn trách nhiệm quốc phòng ở một nhóm người"], answer: 0,
+    explanation: "Ngày hội giáo dục truyền thống, lòng yêu nước và nâng cao trách nhiệm của toàn dân trong xây dựng nền quốc phòng toàn dân."
+  }
+];
+
+</script>
+  <script>
+(function () {
+  "use strict";
+
+  const STORAGE_KEY = "hanh-trang-2212-progress-v1";
+  const state = {
+    mode: "practice",
+    topic: null,
+    questions: [],
+    index: 0,
+    selections: {},
+    checked: {},
+    sessionWrong: [],
+    secondsLeft: 900,
+    timerId: null,
+    progress: loadProgress()
+  };
+
+  const $ = (selector) => document.querySelector(selector);
+  const views = [$("#homeView"), $("#quizView"), $("#resultView")];
+  const letters = ["A", "B", "C", "D"];
+
+  // Normalize Vietnamese text before rendering so combining marks remain attached
+  // consistently across Windows, Android and iOS browsers.
+  window.QUIZ_TOPICS.forEach((topic) => {
+    topic.name = topic.name.normalize("NFC");
+    topic.description = topic.description.normalize("NFC");
+  });
+  window.QUIZ_QUESTIONS.forEach((question) => {
+    question.question = question.question.normalize("NFC");
+    question.options = question.options.map((option) => option.normalize("NFC"));
+    question.explanation = question.explanation.normalize("NFC");
+  });
+
+  function loadProgress() {
+    try {
+      const saved = window.localStorage.getItem(STORAGE_KEY);
+      return Object.assign({ answered: {}, correct: {}, wrong: {}, bookmarks: {} }, JSON.parse(saved) || {});
+    } catch (e) {
+      return { answered: {}, correct: {}, wrong: {}, bookmarks: {} };
+    }
+  }
+
+  function saveProgress() {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state.progress));
+    } catch (e) {
+      // Safari/Quick Look may block storage for file:// pages. The current
+      // session continues in memory even when persistence is unavailable.
+    }
+    updateDashboard();
+  }
+
+  function shuffled(array) {
+    const copy = array.slice();
+    for (let i = copy.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  function showView(target) {
+    views.forEach((view) => view.classList.toggle("hidden", view !== target));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function topicName(id) {
+    return (window.QUIZ_TOPICS.find((topic) => topic.id === id) || {}).name || "Tổng hợp";
+  }
+
+  function updateDashboard() {
+    const studied = Object.keys(state.progress.answered).length;
+    const correct = Object.keys(state.progress.correct).length;
+    const wrong = Object.keys(state.progress.wrong).length;
+    const percent = Math.round((studied / window.QUIZ_QUESTIONS.length) * 100);
+    $("#progressPercent").textContent = `${percent}%`;
+    $("#studiedCount").textContent = studied;
+    $("#correctCount").textContent = correct;
+    $("#wrongCount").textContent = wrong;
+    $("#progressBar").style.width = `${percent}%`;
+    $("#progressRing").style.background = `conic-gradient(var(--red) ${percent * 3.6}deg, #eee5d8 0deg)`;
+    $("#mistakesLabel").textContent = wrong ? `${wrong} câu đang chờ bạn` : "Chưa có câu cần ôn lại";
+    $("#mistakesButton").disabled = wrong === 0;
+  }
+
+  function renderTopics() {
+    const grid = $("#topicGrid");
+    grid.innerHTML = "";
+    window.QUIZ_TOPICS.forEach((topic, index) => {
+      const count = window.QUIZ_QUESTIONS.filter((q) => q.topic === topic.id).length;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "topic-card";
+      button.innerHTML = `<span class="topic-index">${String(index + 1).padStart(2, "0")}</span><b>${topic.name}</b><small>${topic.description} · ${count} câu</small>`;
+      button.addEventListener("click", () => startQuiz("practice", topic.id));
+      grid.appendChild(button);
+    });
+  }
+
+  function startQuiz(mode, topic) {
+    stopTimer();
+    state.mode = mode;
+    state.topic = topic || null;
+    state.index = 0;
+    state.selections = {};
+    state.checked = {};
+    state.sessionWrong = [];
+
+    let pool = window.QUIZ_QUESTIONS;
+    if (mode === "mistakes") {
+      const wrongIds = new Set(Object.keys(state.progress.wrong).map(Number));
+      pool = pool.filter((q) => wrongIds.has(q.id));
+    } else if (topic) {
+      pool = pool.filter((q) => q.topic === topic);
+    }
+
+    state.questions = shuffled(pool).slice(0, mode === "exam" ? 20 : pool.length);
+    state.questions.forEach((question) => { delete question._displayOrder; });
+    if (!state.questions.length) {
+      showToast("Chưa có câu hỏi cho lượt ôn này");
+      return;
+    }
+
+    $("#quizModeLabel").textContent = mode === "exam" ? "THI THỬ" : mode === "mistakes" ? "ÔN CÂU SAI" : "ÔN TẬP";
+    $("#quizTopicLabel").textContent = topic ? topicName(topic) : "Tổng hợp";
+    $("#timer").classList.toggle("hidden", mode !== "exam");
+    showView($("#quizView"));
+    renderQuestion();
+    if (mode === "exam") startTimer();
+  }
+
+  function optionOrder(question) {
+    if (!question._displayOrder) {
+      question._displayOrder = shuffled(question.options.map((text, originalIndex) => ({ text, originalIndex })));
+    }
+    return question._displayOrder;
+  }
+
+  function renderQuestion() {
+    const question = state.questions[state.index];
+    const selected = state.selections[question.id];
+    const isChecked = Boolean(state.checked[question.id]);
+    const answers = $("#answers");
+    answers.innerHTML = "";
+
+    $("#questionNumber").textContent = `Câu ${state.index + 1}/${state.questions.length}`;
+    $("#quizProgressBar").style.width = `${((state.index + 1) / state.questions.length) * 100}%`;
+    $("#liveScore").textContent = state.mode === "exam"
+      ? `${Object.keys(state.selections).length}/${state.questions.length} đã chọn`
+      : `${correctInSession()} đúng`;
+    $("#questionTopic").textContent = topicName(question.topic);
+    $("#questionText").textContent = question.question;
+    $("#bookmarkButton").textContent = state.progress.bookmarks[question.id] ? "★" : "☆";
+
+    optionOrder(question).forEach((option, displayIndex) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "answer";
+      button.innerHTML = `<span class="answer-key">${letters[displayIndex]}</span><span>${option.text}</span>`;
+      if (selected === option.originalIndex) button.classList.add("selected");
+      if (isChecked) {
+        button.disabled = true;
+        if (option.originalIndex === question.answer) button.classList.add("correct");
+        if (selected === option.originalIndex && selected !== question.answer) button.classList.add("wrong");
+      }
+      button.addEventListener("click", () => selectAnswer(question.id, option.originalIndex));
+      answers.appendChild(button);
+    });
+
+    const explanation = $("#explanation");
+    explanation.classList.toggle("hidden", !isChecked || state.mode === "exam");
+    explanation.innerHTML = `<b>Giải thích:</b> ${question.explanation}`;
+    $("#checkButton").classList.toggle("hidden", isChecked);
+    $("#nextButton").classList.toggle("hidden", !isChecked);
+    $("#checkButton").disabled = selected === undefined;
+    $("#previousButton").disabled = state.index === 0;
+    $("#nextButton").textContent = state.index === state.questions.length - 1 ? "Xem kết quả" : "Câu tiếp →";
+
+    if (state.mode === "exam") {
+      $("#checkButton").textContent = state.index === state.questions.length - 1 ? "Nộp bài" : "Lưu & tiếp";
+      $("#nextButton").classList.add("hidden");
+    } else {
+      $("#checkButton").textContent = "Kiểm tra";
+    }
+  }
+
+  function selectAnswer(questionId, originalIndex) {
+    if (state.checked[questionId]) return;
+    state.selections[questionId] = originalIndex;
+    renderQuestion();
+  }
+
+  function checkCurrent() {
+    const question = state.questions[state.index];
+    if (state.selections[question.id] === undefined) return;
+    if (state.mode === "exam") {
+      if (state.index === state.questions.length - 1) {
+        finishQuiz();
+      } else {
+        state.index += 1;
+        renderQuestion();
+      }
+      return;
+    }
+    state.checked[question.id] = true;
+    recordAnswer(question);
+    renderQuestion();
+  }
+
+  function recordAnswer(question) {
+    const isCorrect = state.selections[question.id] === question.answer;
+    state.progress.answered[question.id] = true;
+    if (isCorrect) {
+      state.progress.correct[question.id] = true;
+      delete state.progress.wrong[question.id];
+    } else {
+      state.progress.wrong[question.id] = true;
+      delete state.progress.correct[question.id];
+      if (!state.sessionWrong.includes(question.id)) state.sessionWrong.push(question.id);
+    }
+    saveProgress();
+  }
+
+  function nextQuestion() {
+    if (state.index === state.questions.length - 1) {
+      finishQuiz();
+    } else {
+      state.index += 1;
+      renderQuestion();
+    }
+  }
+
+  function previousQuestion() {
+    if (state.index > 0) {
+      state.index -= 1;
+      renderQuestion();
+    }
+  }
+
+  function correctInSession() {
+    return state.questions.filter((q) => state.checked[q.id] && state.selections[q.id] === q.answer).length;
+  }
+
+  function finishQuiz() {
+    stopTimer();
+    state.questions.forEach((question) => {
+      if (state.selections[question.id] !== undefined) {
+        state.checked[question.id] = true;
+        recordAnswer(question);
+      } else if (state.mode === "exam") {
+        state.checked[question.id] = true;
+        state.progress.answered[question.id] = true;
+        state.progress.wrong[question.id] = true;
+        delete state.progress.correct[question.id];
+        if (!state.sessionWrong.includes(question.id)) state.sessionWrong.push(question.id);
+      }
+    });
+    saveProgress();
+
+    const correct = state.questions.filter((q) => state.selections[q.id] === q.answer).length;
+    const wrong = state.questions.length - correct;
+    const percent = Math.round((correct / state.questions.length) * 100);
+    const score = ((correct / state.questions.length) * 10).toFixed(1).replace(".0", "");
+    $("#resultPercent").textContent = `${percent}%`;
+    $("#resultRing").style.background = `conic-gradient(var(--red) ${percent * 3.6}deg, #eee5d8 0deg)`;
+    $("#resultCorrect").textContent = correct;
+    $("#resultWrong").textContent = wrong;
+    $("#resultScore").textContent = `${score}/10`;
+    $("#resultTitle").textContent = percent >= 80 ? "Bạn nắm bài rất tốt" : percent >= 60 ? "Khá ổn, ôn thêm chút nữa nhé" : "Mỗi câu sai là một lần nhớ lâu hơn";
+    $("#resultMessage").textContent = percent >= 80 ? "Hãy thử một đề mới để củng cố phản xạ." : "Xem lại các câu sai rồi làm lại một lượt ngắn.";
+    $("#reviewWrongButton").disabled = state.sessionWrong.length === 0;
+    showView($("#resultView"));
+  }
+
+  function startTimer() {
+    state.secondsLeft = 900;
+    renderTimer();
+    state.timerId = window.setInterval(() => {
+      state.secondsLeft -= 1;
+      renderTimer();
+      if (state.secondsLeft <= 0) finishQuiz();
+    }, 1000);
+  }
+
+  function renderTimer() {
+    const minutes = Math.floor(state.secondsLeft / 60);
+    const seconds = state.secondsLeft % 60;
+    $("#timer").textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    $("#timer").classList.toggle("warning", state.secondsLeft <= 120);
+  }
+
+  function stopTimer() {
+    if (state.timerId) window.clearInterval(state.timerId);
+    state.timerId = null;
+  }
+
+  function exitQuiz() {
+    stopTimer();
+    showView($("#homeView"));
+    updateDashboard();
+  }
+
+  function toggleBookmark() {
+    const question = state.questions[state.index];
+    if (state.progress.bookmarks[question.id]) delete state.progress.bookmarks[question.id];
+    else state.progress.bookmarks[question.id] = true;
+    saveProgress();
+    renderQuestion();
+  }
+
+  async function shareSite() {
+    const data = { title: document.title, text: "Cùng ôn tập truyền thống Quân đội nhân dân Việt Nam nhé!", url: window.location.href };
+    try {
+      if (navigator.share) await navigator.share(data);
+      else {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast("Đã sao chép đường link");
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") showToast("Bạn có thể sao chép link trên thanh địa chỉ");
+    }
+  }
+
+  function showToast(message) {
+    const toast = $("#toast");
+    toast.textContent = message;
+    toast.classList.add("show");
+    window.setTimeout(() => toast.classList.remove("show"), 2200);
+  }
+
+  document.querySelectorAll("[data-start-mode]").forEach((button) => {
+    button.addEventListener("click", () => startQuiz(button.dataset.startMode));
+  });
+  $("#mistakesButton").addEventListener("click", () => startQuiz("mistakes"));
+  $("#exitQuiz").addEventListener("click", exitQuiz);
+  $("#checkButton").addEventListener("click", checkCurrent);
+  $("#nextButton").addEventListener("click", nextQuestion);
+  $("#previousButton").addEventListener("click", previousQuestion);
+  $("#bookmarkButton").addEventListener("click", toggleBookmark);
+  $("#shareButton").addEventListener("click", shareSite);
+  $("#backHomeButton").addEventListener("click", exitQuiz);
+  $("#restartButton").addEventListener("click", () => startQuiz(state.mode, state.topic));
+  $("#reviewWrongButton").addEventListener("click", () => startQuiz("mistakes"));
+
+  $("#questionTotal").textContent = `${window.QUIZ_QUESTIONS.length} câu hỏi · 6 chủ đề`;
+  renderTopics();
+  updateDashboard();
+  document.documentElement.classList.add("app-ready");
+})();
+
+</script>
+</body>
+</html>
